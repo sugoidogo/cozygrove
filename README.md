@@ -1,5 +1,5 @@
 # Packwiz Modpack with Github Actions
-This repo is a template for creating a [packwiz](https://packwiz.infra.link/) modpack with an auto-updating prism launcher modpack using Github Actions to push updates to Github Pages and Releases.
+This repo is a template for creating a [packwiz](https://packwiz.infra.link/) modpack with an auto-updating [prism launcher](https://prismlauncher.org/) modpack using Github Actions to push updates to Github Pages and Releases.
 ## Usage
 0. Clone/Fork/Download this template onto your pc
 1. Enter the packwiz folder and edit the `pack.toml` or run `packwiz init -r`
