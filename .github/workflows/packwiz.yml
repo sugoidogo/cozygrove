@@ -1,4 +1,4 @@
-name: Build and release on version bump
+name: Packwiz Automated Release
 
 on:
   push:
@@ -13,6 +13,10 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+
+env:
+  CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+  MODRINTH_TOKEN: ${{ secrets.MODRITH_TOKEN }}
 
 jobs:
   release-notes:
@@ -32,6 +36,8 @@ jobs:
         with:
           format: "- {{subject}}"
       - name: Create Release
+        continue-on-error: true
+        id: release
         uses: comnoco/create-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,8 +45,12 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: ${{ env.version }}
           body: ${{ steps.create-release-notes.outputs.release-notes }}
+    outputs:
+      update: ${{ steps.release.outcome  == 'success' }}
+
 
   publish-pages:
+    if: ${{ needs.release-notes.outputs.update == 'true' }}
     name: Publish update to Github Pages
     needs: release-notes
     environment:
@@ -69,7 +79,8 @@ jobs:
         uses: actions/deploy-pages@v4
 
   release-modrinth:
-    name: Publish Modrinth pack to Github Releases
+    if: ${{ needs.release-notes.outputs.update == 'true' }}
+    name: Publish Modrinth pack
     needs: release-notes
     runs-on: ubuntu-latest
     steps:
@@ -94,9 +105,26 @@ jobs:
           file: ${{ env.name }}.mrpack
           overwrite: true
           tag: ${{ env.version	}}
+      - name: Export loader type
+        if: ${{ env.MODRINTH_TOKEN && env.MODRINTH_ID }}
+        run: |
+          if [[ ! -z "${{ env.forge }} "]]; then echo "LOADER=forge" >> $GITHUB_ENV
+          if [[ ! -z "${{ env.fabric }} "]]; then echo "LOADER=fabric" >> $GITHUB_ENV
+          if [[ ! -z "${{ env.neoforge }} "]]; then echo "LOADER=neoforge" >> $GITHUB_ENV
+          if [[ ! -z "${{ env.quilt }} "]]; then echo "LOADER=quilt" >> $GITHUB_ENV
+      - name: Publish to Modrinth
+        if: ${{ env.MODRINTH_TOKEN && env.MODRINTH_ID }}
+        uses: cloudnode-pro/modrinth-publish@v2
+        with:
+          project: ${{ env.MODRINTH_ID }}
+          loaders: ${{ env.LOADER }}
+          token: ${{ env.MODRINTH_TOKEN }}
+          version: ${{ env.version }}
+          files: ${{ env.name }}.mrpack
 
   release-curseforge:
-    name: Publish Curseforge pack to Github Releases
+    if: ${{ needs.release-notes.outputs.update == 'true' }}
+    name: Publish Curseforge pack
     needs: release-notes
     runs-on: ubuntu-latest
     steps:
@@ -122,9 +150,18 @@ jobs:
           file: ${{ env.name }}-curseforge.zip
           overwrite: true
           tag: ${{ env.version	}}
+      - name: Publish to Curseforge
+        if: ${{ env.CURSEFORGE_TOKEN && env.CURSEFORGE_ID }}
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          project_id: ${{ env.CURSEFORGE_ID }}
+          token: ${{ env.CURSEFORGE_TOKEN }}
+          game_endpoint: 'minecraft'
+          file_path: ${{ env.name }}-curseforge.zip
 
   release-prism:
-    name: Publish Prism pack to Github Releases
+    if: ${{ needs.release-notes.outputs.update == 'true' }}
+    name: Publish Prism pack
     needs: release-notes
     runs-on: ubuntu-latest
     steps:
