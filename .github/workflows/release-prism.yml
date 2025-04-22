@@ -1,0 +1,41 @@
+name: Create Prism Launcher Release
+
+on:
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Semantic Version'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Export pack variables
+        working-directory: ./packwiz
+        run: for var in $(grep = pack.toml | tr -d ' "'); do echo $var; done >> $GITHUB_ENV
+      - name: Export Packwiz Prism Pack
+        run: |
+          mv packwiz prism/minecraft
+          cd prism/minecraft
+          wget https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar
+          cd ..
+          zip -r ../${{ env.name }}-prism.zip *
+      - name: Upload Export
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ${{ env.name }}-prism.zip
+          overwrite: true
+          tag: ${{ inputs.tag || github.ref_name	}}
+

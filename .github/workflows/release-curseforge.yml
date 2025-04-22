@@ -1,0 +1,43 @@
+name: Create Curseforge Release
+
+on:
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Semantic Version'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Export pack variables
+        working-directory: ./packwiz
+        run: for var in $(grep = pack.toml | tr -d ' "'); do echo $var; done >> $GITHUB_ENV
+      - name: Download Packwiz
+        working-directory: ./packwiz
+        run: curl -L https://github.com/sugoidogo/packwiz/releases/latest/download/packwiz_linux_amd64.tar.gz | tar -xzvf - packwiz
+      - name: Export Curseforge Pack
+        working-directory: ./packwiz
+        run: |
+          ./packwiz curseforge detect
+          ./packwiz curseforge export
+          mv ${{ env.name }}*.zip ../${{ env.name }}-curseforge.zip
+      - name: Upload Exports
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ${{ env.name }}-curseforge.zip
+          overwrite: true
+          tag: ${{ inputs.tag || github.ref_name	}}
+

@@ -1,0 +1,34 @@
+name: Create Release Notes
+
+on:
+  push:
+    branches: ["master"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Export pack variables
+        working-directory: ./packwiz
+        run: for var in $(grep = pack.toml | tr -d ' "'); do echo $var; done >> $GITHUB_ENV
+      - name: Generate Release Notes
+        id: create-release-notes
+        uses: johnyherangi/create-release-notes@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          format: "- {{subject}}"
+      - name: Create Release
+        continue-on-error: true
+        uses: comnoco/create-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.version }}
+          release_name: ${{ env.version }}
+          body: ${{ steps.create-release-notes.outputs.release-notes }}
