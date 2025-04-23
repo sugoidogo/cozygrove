@@ -809,6 +809,11 @@ hash = "d73a2964f67807ac1aa7db9ebe0997ea03daf6187a369c5f793d2aee753da50a"
 metafile = true
 
 [[files]]
+file = "mods/mc2discord.pw.toml"
+hash = "8e7b41bae5e5c14d7a98f352e97dad0de2445726628b8aabb6a65b5ae576fb71"
+metafile = true
+
+[[files]]
 file = "mods/melody.pw.toml"
 hash = "9cc852c7d5024d24f0403b7f86200d2283a89ffc66896123406102e57318844b"
 metafile = true
