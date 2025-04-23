@@ -141,6 +141,7 @@ jobs:
       - name: Build Curseforge Pack
         working-directory: ./packwiz
         run: |
+          mkdir -p mods
           ./packwiz curseforge detect
           ./packwiz curseforge export
           mv ${{ env.name }}*.zip ../${{ env.name }}-curseforge.zip
