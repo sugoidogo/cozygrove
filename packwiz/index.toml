@@ -704,6 +704,11 @@ hash = "131d43677bacd12704cd8d7a996340fe5281f883245f1cf1922940fd5c4d4df7"
 metafile = true
 
 [[files]]
+file = "mods/falling-tree.pw.toml"
+hash = "54288ce991e822db044de13b02bebe9ed9373bd988a5f852e438688643dd7c65"
+metafile = true
+
+[[files]]
 file = "mods/fancymenu.pw.toml"
 hash = "6b3c09155ba55f3c70cf4dd7245708215e4bda1fdd3cd8eaa9a9adf9255a038e"
 metafile = true
