@@ -629,8 +629,18 @@ hash = "8924f70537405b8bc884504814f8963483268b492bcad4c6d87badde63ee69e5"
 metafile = true
 
 [[files]]
+file = "mods/cobblemon-legendary-structures.pw.toml"
+hash = "516f919c449af1af67374a500c385e4cb9ec26450edd1de4b85dd97895958bf5"
+metafile = true
+
+[[files]]
 file = "mods/cobblemon.pw.toml"
 hash = "3593a55533ec4e8783a733d33ca31831310cb779b829e4705056cf0241e6a16b"
+metafile = true
+
+[[files]]
+file = "mods/cobblemonrider1.5.pw.toml"
+hash = "cc6ac07279932f8b3ed46b78ab075acd42fd20438783503f8e53e9d71e29a9bb"
 metafile = true
 
 [[files]]
@@ -706,6 +716,11 @@ metafile = true
 [[files]]
 file = "mods/feytweaks.pw.toml"
 hash = "84f4929e32f88e849749d24c37947ea664a1e3a06348ccc1ca3b8177ffdeaca2"
+metafile = true
+
+[[files]]
+file = "mods/hiddenmons-cobblemon.pw.toml"
+hash = "d2e4214bbe6f93f7f95f688989ee296b419b7dba10dee858abb346ae73b4cfbe"
 metafile = true
 
 [[files]]
