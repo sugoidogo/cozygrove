@@ -172,11 +172,18 @@ jobs:
       - name: Export pack variables
         working-directory: ./packwiz
         run: for var in $(grep = pack.toml | tr -d ' "'); do echo $var; done >> $GITHUB_ENV
+      - name: Download Packwiz
+        working-directory: ./packwiz
+        run: curl -L https://github.com/sugoidogo/packwiz/releases/latest/download/packwiz_linux_amd64.tar.gz | tar -xzvf - packwiz
       - name: Build Prism pack
         run: |
-          mv packwiz prism/minecraft
+          cd packwiz
+          ./packwiz serve &
+          cd ..
+          mkdir -p prism/minecraft
           cd prism/minecraft
           wget https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar
+          java -jar packwiz-installer-bootstrap.jar -g http://localhost:8080/pack.toml
           cd ..
           zip -r ../${{ env.name }}-prism.zip *
       - name: Release Prism pack
