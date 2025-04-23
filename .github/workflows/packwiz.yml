@@ -2,7 +2,7 @@ name: Packwiz Automated Release
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
