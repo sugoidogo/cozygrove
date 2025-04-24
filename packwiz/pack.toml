@@ -1,13 +1,13 @@
-name = "CHANGEME"
-author = "CHANGEME"
-version = "0.0.0"
+name = "CozyGrove"
+author = "SugoiDogo"
+version = "1.0.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "7b81c9e9d9e6e21a9865a2dded0dfd77e7683d679b98fe5b0114eaed9a31f17e"
+hash = "3858cf23280d4170b6349f61ec813fc852b5477a8df7ad0f3df5a7a3be0e573d"
 
 [versions]
-forge = "47.4.0"
-minecraft = "1.20.1"
+fabric = "0.16.10"
+minecraft = "1.21.1"
