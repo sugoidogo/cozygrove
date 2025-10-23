@@ -1,0 +1,13 @@
+name = "Stendhal"
+filename = "stendhal-1.4.1-1.21.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "a653cc8d30a28d600ad6e1b3045564ebf9d67efc"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5508470
+project-id = 463457

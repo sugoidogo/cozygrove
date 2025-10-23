@@ -1,0 +1,13 @@
+name = "CozyGrove"
+author = "SugoiDogo"
+version = "1.0.1"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "657e28cddaa8558d87637acacc5bdfc995b5b01297abb6da7dfecb70569f9643"
+
+[versions]
+fabric = "0.16.10"
+minecraft = "1.21.1"
