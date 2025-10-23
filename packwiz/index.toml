@@ -820,7 +820,7 @@ metafile = true
 
 [[files]]
 file = "mods/modflared.pw.toml"
-hash = "17a667e648c44cefc9e426291227b14665e9e1b0465acbe7f48734b56eb09106"
+hash = "180b7d91608117d89e33fdc968b2c82f5fc4ce46467d0ab8654eca31f832535e"
 metafile = true
 
 [[files]]

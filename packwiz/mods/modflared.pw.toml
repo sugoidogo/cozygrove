@@ -1,13 +1,13 @@
 name = "Modflared"
-filename = "modflared-1.2.2+release.81.jar"
+filename = "modflared-1.2.2+release.65.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/uRHq6kbO/versions/i7C9sMTD/modflared-1.2.2%2Brelease.81.jar"
+url = "https://cdn.modrinth.com/data/uRHq6kbO/versions/kjLbyq1W/modflared-1.2.2%2Brelease.65.jar"
 hash-format = "sha512"
-hash = "e30cfb861c31e16c0cbec179f5c3bbccb304156699f651adfa5d6017c23e988c7cc51c27a06d684e3bde201923dbb830c2148874b92615f1e90eac6311f17db7"
+hash = "c45c039cecee0e7d0a4b91affcb13149b6f8cad28b0b0698cf350e25be6704f95156bb1a0c49e43545b535a7282634ad59bc7acfba78a8e670cfa273f9c6deef"
 
 [update]
 [update.modrinth]
 mod-id = "uRHq6kbO"
-version = "i7C9sMTD"
+version = "kjLbyq1W"
