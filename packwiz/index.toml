@@ -614,6 +614,16 @@ hash = "753af54254dfac431243f1a8d37538fb4092e7616803a340fe3e86d1df5b02bb"
 metafile = true
 
 [[files]]
+file = "mods/chunky-offline.pw.toml"
+hash = "83a6029f16a63cd147681a573e628d614842c540a718d4229b07371b168c6c1c"
+metafile = true
+
+[[files]]
+file = "mods/chunky.pw.toml"
+hash = "7fe287ca1bed0ad67f37e62a5816da7b7ae59486102c5e4b7532f0a999444527"
+metafile = true
+
+[[files]]
 file = "mods/cicada.pw.toml"
 hash = "f87d95c3a60123837e66cf4545fb09ffbd45b5e5ff6a514d1660bbc3654776db"
 metafile = true
@@ -666,6 +676,11 @@ metafile = true
 [[files]]
 file = "mods/dismount-entity.pw.toml"
 hash = "15054887b809adac7ec2500f3e883168eed6ed91373b92a054b6d04997b18a49"
+metafile = true
+
+[[files]]
+file = "mods/distanthorizons.pw.toml"
+hash = "3f8fb0012b658c3ed2dfcde1385aa6255ee46cd18b77975d68665aaf0ee2a94d"
 metafile = true
 
 [[files]]

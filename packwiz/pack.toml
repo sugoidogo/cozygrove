@@ -1,12 +1,12 @@
 name = "CozyGrove"
 author = "SugoiDogo"
-version = "1.0.2"
+version = "1.1.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "8a1b93de34268b66ed28e5823c9ab66cc59311e545480baf0b88702b42342af3"
+hash = "82cf7e87c10b9bbb3d084b7750882edb2315481e5a5d18bb1ee22b4f5c21f351"
 
 [versions]
 fabric = "0.16.10"
